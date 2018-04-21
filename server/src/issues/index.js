@@ -5,6 +5,6 @@ const router = Router();
 
 const RESOURCE = 'issues';
 
-router.post(`/${RESOURCE}`, list);
+router.get(`/${RESOURCE}`, list);
 
 module.exports = router;
