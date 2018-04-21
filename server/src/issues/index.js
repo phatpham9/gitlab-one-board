@@ -1,4 +1,5 @@
 const { Router } = require('express');
+
 const { list } = require('./controller');
 
 const router = Router();

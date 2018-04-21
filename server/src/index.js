@@ -7,7 +7,7 @@ const path = require('path');
 const { NOT_FOUND } = require('http-status-codes');
 
 const issuesRoute = require('./issues');
-const { sendNotFound } = require('./utils/httpError');
+const { sendNotFound } = require('./utils/http-error');
 const { fetchIssues } = require('./utils/gitlab-api');
 
 // Constants
@@ -28,7 +28,7 @@ app.use('/api', [
   issuesRoute,
 ]);
 
-const notFoundError = (req, res) => res.send(NOT_FOUND, sendNotFound());
+const notFoundError = (req, res) => res.status(NOT_FOUND).json(sendNotFound());
 
 // Index request return the React app, so it can handle routing.
 app.get('/', (request, response) => {
@@ -38,9 +38,9 @@ app.get('/', (request, response) => {
 app.all('*', notFoundError);
 
 
-app.listen(PORT, HOST, () => {
-  // load gitload cron
-  fetchIssues();
+app.listen(PORT, HOST, async () => {
+  // fetch issues for the first time
+  await fetchIssues();
 });
 
-console.log(`Running on http://${HOST}:${PORT}`); // eslint-disable-line
+console.log(`Running on http://${HOST}:${PORT}`); // eslint-disable-line no-console

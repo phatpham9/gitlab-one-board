@@ -1,13 +1,15 @@
-const { doFetch } = require('./doFetch');
+const { doFetch } = require('./do-fetch');
 
 const SCOPE = 'all';
 const PER_PAGE = 100;
+
 const issues = [];
-const lastFetch = {};
+let lastFetch;
 
 const fetchAsync = async (page) => {
   const response = await doFetch(`issues?scope=${SCOPE}&per_page=${PER_PAGE}&page=${page}`);
   const list = await response.json();
+
   return list;
 };
 
@@ -29,12 +31,12 @@ const fetchIssues = async () => {
   const remainIssues = await Promise.all(promises);
   remainIssues.forEach(item => item.forEach(issue => issues.push(issue)));
 
-  lastFetch.updated = new Date();
+  lastFetch = new Date();
 };
 
 
 module.exports = {
-  fetchIssues,
   issues,
   lastFetch,
+  fetchIssues,
 };
