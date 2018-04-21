@@ -1,0 +1,66 @@
+{
+  "name": "gitlab-one-board-server",
+  "version": "1.0.0",
+  "description": "A reference for running a node server.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "nodemon src/index.js",
+    "serve": "node src/index.js",
+    "lint": "eslint . --ignore-path .gitignore",
+    "test": "mocha --timeout 10000"
+  },
+  "author": "Khang Huynh",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.2",
+    "express-validator": "^5.1.2",
+    "http-status-codes": "^1.3.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "15.0.1",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "5.0.1",
+    "eslint-plugin-react": "7.1.0",
+    "mocha": "^5.0.5",
+    "nodemon": "^1.14.7",
+    "chai-http": "^2.0.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "extends": "airbnb",
+    "rules": {
+      "no-underscore-dangle": [
+        2,
+        {
+          "allow": [
+            "_id",
+            "__v"
+          ]
+        }
+      ],
+      "no-param-reassign": [
+        1,
+        {
+          "props": false
+        }
+      ],
+      "func-names": [
+        "error",
+        "never"
+      ],
+      "no-await-in-loop": 0,
+      "no-restricted-syntax": [
+        "error",
+        "WithStatement",
+        "BinaryExpression[operator='in']"
+      ],
+      "linebreak-style": 0
+    }
+  }
+}
