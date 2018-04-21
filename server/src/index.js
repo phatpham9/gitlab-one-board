@@ -12,7 +12,7 @@ const issuesRoute = require('./issues');
 
 // Constants
 const PORT = process.env.PORT || 9000;
-const HOST = '0.0.0.0';
+const HOST = process.env.HOST || 'localhost';
 
 const CLIENT_BUILD_PATH = path.join(__dirname, '../../client/build');
 
