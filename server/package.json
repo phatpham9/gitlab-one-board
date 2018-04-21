@@ -16,18 +16,19 @@
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "express-validator": "^5.1.2",
-    "http-status-codes": "^1.3.0"
+    "http-status-codes": "^1.3.0",
+    "node-fetch": "^2.1.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
+    "chai-http": "^2.0.1",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.0.1",
     "eslint-plugin-import": "2.2.0",
     "eslint-plugin-jsx-a11y": "5.0.1",
     "eslint-plugin-react": "7.1.0",
     "mocha": "^5.0.5",
-    "nodemon": "^1.14.7",
-    "chai-http": "^2.0.1"
+    "nodemon": "^1.14.7"
   },
   "eslintConfig": {
     "env": {
