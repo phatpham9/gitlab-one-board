@@ -11,7 +11,7 @@ const BoardItem = ({title, issues}) => (
     <div className={`panel panel-${title} panel-line`}>
         <div className="panel-heading">
           <h3 className="panel-title text-capitalize">{title}</h3>
-          <span className="panel-count">{issues.length || ''}</span>
+          <span className="panel-count">{issues.length || '\u00A0'}</span>
         </div>
         <div className="panel-body">
         { issues.length > 0 &&

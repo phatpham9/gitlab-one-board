@@ -67,38 +67,22 @@ $closed-color: #17a2b8;
         }
         &.panel-todo {
             .panel-heading {
-                color: $todo-color;
                 border-top-color: $todo-color;
-            }
-            .panel-title {
-                color: $todo-color;
             }
         }
         &.panel-doing {
             .panel-heading {
-                color: $doing-color;
                 border-top-color: $doing-color;
-            }
-            .panel-title {
-                color: $doing-color;
             }
         }
         &.panel-reviewing {
             .panel-heading {
-                color: $reviewing-color;
                 border-top-color: $reviewing-color;
-            }
-            .panel-title {
-                color: $reviewing-color;
             }
         }
         &.panel-closed {
             .panel-heading {
-                color: $closed-color;
                 border-top-color: $closed-color;
-            }
-            .panel-title {
-                color: $closed-color;
             }
         }
         .panel-body {

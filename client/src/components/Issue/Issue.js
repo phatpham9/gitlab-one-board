@@ -12,12 +12,13 @@ import './Issue.scss';
 
 const Issue = ({issue}) => {
   const idIssue = issue.iid;
+  const webUrl = issue.web_url;
   const title = issue.title || 'N/A';
   const repoName = /^(http[s]?:\/\/[a-zA-Z0-9.\-_]+\/(.*))\/issues/.exec(issue.web_url)[2];
   const avatarUrl = issue.assignee && issue.assignee.avatar_url;
   return(
     <div className="issue"> 
-      <Card>
+      <a target="_blank" href={webUrl} className="card">
         <CardBody>
           <div className="card-wrapper">
             <Col className="p-0 pr-2" md="10">
@@ -44,7 +45,7 @@ const Issue = ({issue}) => {
             })
           }
         </CardBody>
-      </Card>
+      </a>
     </div>
   );
 };

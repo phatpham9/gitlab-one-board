@@ -47,7 +47,7 @@ class Board extends Component {
 
   render() {
     return(
-      <Container fluid className="board mt-5 mb-3">
+      <Container fluid className="board mt-5 mb-2">
         <Row>
           {
             this.renderBoards(this.state)
