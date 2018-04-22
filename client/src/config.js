@@ -4,7 +4,5 @@ export const APP = {
   version : "0.0.1",
   year : new Date().getFullYear(),
   language : "us",
-  author: {
-    website: 'https://leflair.vn'
-  },
+  github: 'https://github.com/phatpham9/gitlab-one-board'
 };

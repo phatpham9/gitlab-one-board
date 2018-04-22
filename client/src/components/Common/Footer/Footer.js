@@ -5,7 +5,7 @@ import './Footer.scss';
 
 const Footer = () => (
     <footer className="footer text-center" >
-        Made by <a target="_blank" href={`${APP.author.website}`}>leflair.vn</a>
+        Star us on <a target="_blank" href={`${APP.github}`}>GitHub</a>
     </footer>
 );
 

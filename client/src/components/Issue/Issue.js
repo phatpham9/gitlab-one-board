@@ -11,6 +11,7 @@ import {
 import './Issue.scss';
 
 const Issue = ({issue}) => {
+  const idIssue = issue.iid;
   const title = issue.title || 'N/A';
   const repoName = /^(http[s]?:\/\/[a-zA-Z0-9.\-_]+\/(.*))\/issues/.exec(issue.web_url)[2];
   const avatarUrl = issue.assignee && issue.assignee.avatar_url;
@@ -22,14 +23,12 @@ const Issue = ({issue}) => {
             <Col className="p-0 pr-2" md="10">
               <CardText className="mb-0">
                 {title}
-                <span className="repo-name"> {repoName}</span>
+                <span className="repo-name"> {`${repoName}#${idIssue}`}</span>
               </CardText>
             </Col>
             <Col className="p-0 text-right" md="2">
-            { avatarUrl ?
+            { avatarUrl &&
               <img width="20" className="rounded-circle" src={avatarUrl} alt="avatar" />
-              :
-              'N/A'
             }
             </Col>
           </div>
