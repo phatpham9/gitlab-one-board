@@ -37,4 +37,3 @@ docker run -p 80:80 -e GITLAB_DOMAIN=[your-gitlab-domain] -e GITLAB_TOKEN=[your-
 - Chau Duong | [GitHub](https://github.com/chauduong1192)
 - Khang Huynh | [GitHub](https://github.com/khanghuynh92)
 - Phat Pham | [Website](https://onroads.xyz) | [GitHub](https://github.com/phatpham9)
--
