@@ -1,10 +1,15 @@
-const { OK, BAD_REQUEST } = require('http-status-codes');
+const { issues, lastFetch, fetchIssues } = require('../utils/gitlab-api');
 
-const list = (req, res) => {
+const INTERVAL = 5 * 60 * 1000; // 5 mins
 
-  res.json([]);
+const list = async (req, res) => {
+  res.json(issues);
+
+  if (new Date() - lastFetch > INTERVAL) {
+    await fetchIssues();
+  }
 };
 
 module.exports = {
   list,
-}
+};
