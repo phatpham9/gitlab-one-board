@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Provider as ReduxProvider } from 'react-redux';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+import configureStore from './state';
+// import { getIssues } from './state/ducks/issues';
+
+import Header from './components/Common/Header';
+import Content from './components/Common/Content';
+import Footer from './components/Common/Footer';
+import Board from './components/Board';
+
+import './App.scss';
+
+const store = configureStore(window.REDUX_INITIAL_DATA);
+
+// Promise.all([
+//   store.dispatch(getIssues()),
+// ]);
+
+const App = props => (
+    <ReduxProvider store={store}>
+      <div className="app">
+        <Header />
+        <Content>
+          <Board />
+        </Content>
+        <Footer />
       </div>
-    );
-  }
-}
+    </ReduxProvider>
+);
 
 export default App;
