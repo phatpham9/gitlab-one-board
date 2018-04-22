@@ -46,7 +46,6 @@ $closed-color: #17a2b8;
                 margin-bottom: 0;
                 font-size: 19px;
                 font-weight: 500;
-                color: $default-color;
             }
             .panel-count {
                 padding: 10px;
@@ -67,22 +66,20 @@ $closed-color: #17a2b8;
         }
         &.panel-todo {
             .panel-heading {
+                color: $todo-color;
                 border-top-color: $todo-color;
             }
         }
         &.panel-doing {
             .panel-heading {
+                color: $doing-color;
                 border-top-color: $doing-color;
             }
         }
         &.panel-reviewing {
             .panel-heading {
+                color: $reviewing-color;
                 border-top-color: $reviewing-color;
-            }
-        }
-        &.panel-closed {
-            .panel-heading {
-                border-top-color: $closed-color;
             }
         }
         .panel-body {
@@ -93,6 +90,13 @@ $closed-color: #17a2b8;
     .panel-backlog {
         & .panel-title {
             font-weight: bold !important;
+            color: $default-color;
+        }
+    }
+    .panel-closed {
+        & .panel-title {
+            font-weight: bold !important;
+            color: $default-color;
         }
     }
 }

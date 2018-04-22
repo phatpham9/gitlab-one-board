@@ -69,4 +69,3 @@ export default connect(
     getIssues
   },
 )(Board);
-

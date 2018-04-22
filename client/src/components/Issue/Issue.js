@@ -34,15 +34,13 @@ const Issue = ({issue}) => {
             </Col>
           </div>
           { issue.labels.length > 0 &&
-            issue.labels.map(label => {
-              const bagleSplit = label.split(':');
-              const bagle = bagleSplit.length !== 1 ? bagleSplit[1] : bagleSplit[0];
-              return(
-                <Badge key={label} color={bagle}>
-                  {label}
-                </Badge>
-              )
-            })
+            issue.labels.map(label => 
+              <Badge
+                key={label}
+                color='default'>
+                {label}
+              </Badge>
+            )
           }
         </CardBody>
       </a>
