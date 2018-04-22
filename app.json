@@ -1,0 +1,22 @@
+{
+  "name": "GitLab One Board",
+  "description": "One board for all GitLab's issues",
+  "repository": "https://github.com/phatpham9/gitlab-one-board",
+  "keywords": ["gitlab", "issue board", "kanban board", "reactjs", "create-react-app", "nodejs", "expressjs"],
+  "logo": "https://about.gitlab.com/images/new_logo/A.jpg",
+  "env": {
+    "GITLAB_DOMAIN": {
+      "description": "Your GitLab domain name",
+      "value": "gitlab.com"
+    },
+    "GITLAB_TOKEN": {
+      "description": "Your GitLab API key",
+      "value": ""
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
