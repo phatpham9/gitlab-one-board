@@ -1,8 +1,7 @@
 {
   "name": "gitlab-one-board",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": {},
+  "version": "0.1.0",
+  "repository": "https://github.com/phatpham9/gitlab-one-board",
   "license": "MIT",
   "engines": {
     "node": "^9"
