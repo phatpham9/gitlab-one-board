@@ -1,0 +1,106 @@
+$default-color: #37474f;
+$todo-color: #ffc107;
+$doing-color: #28a745;
+$reviewing-color: #007bff;
+$close-color: #17a2b8;
+
+.board-item {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    @media (min-width: 768px) {
+        &.col-md-3 {
+            flex: 1 1 20% ;
+            max-width: 20% ;
+        }
+    }
+    
+    &:first-child {
+        padding-left: 10px !important;
+    }
+    &:last-child {
+        padding-right: 10px !important;
+    }
+    .panel {
+        position: relative;
+        background-color: #f1f4f5;
+        border: 0 solid transparent;
+        border-radius: .286rem;
+        box-shadow: 0 1px 1px rgba(0,0,0,.05);
+        .panel-heading {
+            border-top-left-radius: .214rem;
+            border-top-right-radius: .214rem;
+            position: sticky;
+            top: 0;
+            padding: 0;
+            border-bottom: 1px solid #e4eaec;
+        }
+        .panel-body {
+            overflow-x: scroll;
+            height: 750px;
+        }
+    }
+    .panel-line {
+        .panel-heading {
+            border: none;
+            border-top: 3px solid transparent;
+            .panel-title {
+                display: block;
+                padding: 10px;
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 19px;
+                font-weight: 500;
+                color: $default-color;
+            }
+        }
+        &.panel-todo {
+            .panel-heading {
+                color: $todo-color;
+                background: 0 0;
+                border-top-color: $todo-color;
+            }
+            .panel-title {
+                color: $todo-color;
+            }
+        }
+        &.panel-doing {
+            .panel-heading {
+                color: $doing-color;
+                background: 0 0;
+                border-top-color: $doing-color;
+            }
+            .panel-title {
+                color: $doing-color;
+            }
+        }
+        &.panel-reviewing {
+            .panel-heading {
+                color: $reviewing-color;
+                background: 0 0;
+                border-top-color: $reviewing-color;
+            }
+            .panel-title {
+                color: $reviewing-color;
+            }
+        }
+        &.panel-close {
+            .panel-heading {
+                color: $close-color;
+                background: 0 0;
+                border-top-color: $close-color;
+            }
+            .panel-title {
+                color: $close-color;
+            }
+        }
+        .panel-body {
+            position: relative;
+            padding: 10px;
+        }
+    }
+    .panel-backlog {
+        & .panel-title {
+            font-weight: bold !important;
+        }
+    }
+}

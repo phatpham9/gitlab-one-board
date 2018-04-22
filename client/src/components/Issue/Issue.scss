@@ -1,0 +1,28 @@
+.issue {
+  margin-bottom: 5px;
+  .card {
+    background: #fff;
+    border-color: #00000014;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    .card-body {
+      padding: 10px;
+      .card-wrapper {
+        display: flex;
+        margin-bottom: 5px;
+        .card-text {
+          font-size: 15px;
+          .repo-name {
+            font-size: 14px;
+            color: gray;
+          }
+        }
+      }  
+      .badge {
+        margin-right: 8px;
+        font-size: 12px;
+        font-weight: 500;
+      }
+    }
+  }
+}
