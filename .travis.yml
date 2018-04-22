@@ -1,0 +1,39 @@
+sudo: required
+
+language: node_js
+
+node_js:
+- 9
+
+env:
+- DOCKER_REPO=phatpham9/gitlab-one-board
+
+jobs:
+  include:
+  - stage: test
+    install:
+    - yarn install
+    script:
+    - yarn build
+  - stage: build & deploy
+    services:
+    - docker
+    script:
+    - docker build -t "$DOCKER_REPO" .
+    - if [ "$TRAVIS_BRANCH" == "master" -a ! -z "$TRAVIS_TAG" ]; then
+        docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+        for TAG in {"$TRAVIS_TAG",latest}; do
+          docker tag "$DOCKER_REPO" "$DOCKER_REPO":"$TAG";
+          docker push "$DOCKER_REPO":"$TAG";
+        done
+      fi
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+notifications:
+  email: false
+  slack:
+    secure: oeYKPVJjk9f5cggXoz+C0jsA+wZj65Ujsi1Sr6s58zGcVH8Yuzb8WZZQEChRexkoDagGj3tOnxVyTVQLJAM9MyhP3EhZNhOPS3j3ZBA6XF8t5m/DQgGmD99Ce7+eAD9NWw2jSyxntyg65PiaciYPGGCSopefXm8iLiRLjzG3JAxRbLA2jCGKRDVLWE7Bii7+t3yqHDOTwn1bK/nvwdWUqzhYVsCh7d0H7JboTn5pUq43XU3KFTonoObKzf8BuFsCkK2LVDKrjHb2YxGqbn2eSuDKmB5R1FlvJq7X8YrRt0oXdtdFnSFlfiYIVPuiCqfXlBB62HzE5UBXe8GMeWBV6IaXsD2U126opj0OySUTjnQrq1QsGrNUOn3zsQMKrW8kW+WRX5/OBmhTKmBD4HLPvJn+hvV/jqpFx7ChNmaLRMBiXQYT0VQIwM1TyKXuBiQZry/eJzMwWjZrFYKJlqL+diLZHrUAKB/fpIYPOeT9+Iihr+E0/33G5RXp68SMcXwkVVLECS1foqHtRU6ZDq+GqNeJeq/dD91ffWRNoLZPHlSAoRrMD0KJvCcfp2E90M8Lir2TnMrfB3qDwC31lAQR8DtXb7M0P6Xn6r0hfGhnfqie13EOLSVb2lyg8j/iZ73aBrju4d3vBYjrJsnch+X9B9OqX7HPKx8Kwf/WvCXsMTM=
