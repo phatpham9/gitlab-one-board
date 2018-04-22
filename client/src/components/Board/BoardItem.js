@@ -11,11 +11,12 @@ const BoardItem = ({title, issues}) => (
     <div className={`panel panel-${title} panel-line`}>
         <div className="panel-heading">
           <h3 className="panel-title text-capitalize">{title}</h3>
+          <span className="panel-count">{issues.length || ''}</span>
         </div>
         <div className="panel-body">
         { issues.length > 0 &&
-            issues.map(issue => 
-              <Issue issue/>
+            issues.map((issue, index) => 
+              <Issue key={index} issue={issue}/>
             )
         }
         </div>

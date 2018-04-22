@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 
 import { connect } from 'react-redux';
-import { issuesSelectors } from '../../state/ducks/issues';
+import { getIssues, issuesSelectors } from '../../state/ducks/issues';
 
 import BoardItem from './BoardItem';
 
@@ -15,44 +15,42 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boards: [
-        {
-          name: 'backlog',
-          issues: []
-        }, {
-          name: 'todo',
-          issues: []
-        }, {
-          name: 'doing',
-          issues: []
-        }, {
-          name: 'reviewing',
-          issues: []
-        }, {
-          name: 'close',
-          issues: []
-        }
-      ]
+      backlog: [],
+      todo: [],
+      doing: [],
+      reviewing: [],
+      closed: []
     }
   }
 
+  async componentDidMount() {
+    await this.props.getIssues();    
+    this.setState({
+      backlog: this.props.issuesBacklog,
+      todo: this.props.issuesTodo,
+      doing: this.props.issuesDoing,
+      reviewing: this.props.issuesReviewing,
+      closed: this.props.issuesClosed
+    })
+  }
+
   renderBoards(boards) {
-    if(!boards.length) return;
-    return boards.map(board =>
+    // if(!boards.length) return;
+    return Object.keys(boards).map((key, index) =>
       <BoardItem
-        key={board.name}
-        title={board.name}
-        issues={board.issues}
+        key={index}
+        title={key}
+        issues={boards[key]}
       />
     )
   }
 
   render() {
     return(
-      <Container fluid className="mt-5 mb-3">
+      <Container fluid className="board mt-5 mb-3">
         <Row>
           {
-            this.renderBoards(this.state.boards)
+            this.renderBoards(this.state)
           }
         </Row>
       </Container>
@@ -62,10 +60,13 @@ class Board extends Component {
 
 export default connect(
   state => ({
-    issuesByBackLog: issuesSelectors.getIssuesByBackLog(state),
-    issuesByTodo: issuesSelectors.getIssuesByTodo(state),
-    issuesByDoing: issuesSelectors.getIssuesByDoing(state),
-    issuesByReview: issuesSelectors.getIssuesByReview(state),
-    issuesByClose: issuesSelectors.getIssuesByClose(state),
-  }), {},
+    issuesBacklog: issuesSelectors.getIssuesBacklog(state),
+    issuesTodo: issuesSelectors.getIssuesTodo(state),
+    issuesDoing: issuesSelectors.getIssuesDoing(state),
+    issuesReviewing: issuesSelectors.getIssuesReviewing(state),
+    issuesClosed: issuesSelectors.getIssuesClosed(state),
+  }), {
+    getIssues
+  },
 )(Board);
+

@@ -7,6 +7,7 @@ const getIssues = async () => {
     const res = await $get(`${PATH}`);
 
     return res;
+    
   } catch (error) {
     throw error;
   }

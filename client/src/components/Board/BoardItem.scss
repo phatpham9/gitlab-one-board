@@ -2,7 +2,7 @@ $default-color: #37474f;
 $todo-color: #ffc107;
 $doing-color: #28a745;
 $reviewing-color: #007bff;
-$close-color: #17a2b8;
+$closed-color: #17a2b8;
 
 .board-item {
     padding-right: 5px !important;
@@ -22,6 +22,7 @@ $close-color: #17a2b8;
     }
     .panel {
         position: relative;
+        margin-bottom: 1rem;
         background-color: #f1f4f5;
         border: 0 solid transparent;
         border-radius: .286rem;
@@ -33,16 +34,11 @@ $close-color: #17a2b8;
             top: 0;
             padding: 0;
             border-bottom: 1px solid #e4eaec;
-        }
-        .panel-body {
-            overflow-x: scroll;
-            height: 750px;
-        }
-    }
-    .panel-line {
-        .panel-heading {
-            border: none;
-            border-top: 3px solid transparent;
+            display: flex;
+            justify-content: space-between;
+            @media (max-width: 768px) {
+                position: relative;
+            }
             .panel-title {
                 display: block;
                 padding: 10px;
@@ -52,11 +48,26 @@ $close-color: #17a2b8;
                 font-weight: 500;
                 color: $default-color;
             }
+            .panel-count {
+                padding: 10px;
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        .panel-body {
+            overflow-x: scroll;
+            height: 720px;
+        }
+    }
+    .panel-line {
+        .panel-heading {
+            border: none;
+            border-top: 3px solid transparent;
+            background: 0 0;
         }
         &.panel-todo {
             .panel-heading {
                 color: $todo-color;
-                background: 0 0;
                 border-top-color: $todo-color;
             }
             .panel-title {
@@ -66,7 +77,6 @@ $close-color: #17a2b8;
         &.panel-doing {
             .panel-heading {
                 color: $doing-color;
-                background: 0 0;
                 border-top-color: $doing-color;
             }
             .panel-title {
@@ -76,21 +86,19 @@ $close-color: #17a2b8;
         &.panel-reviewing {
             .panel-heading {
                 color: $reviewing-color;
-                background: 0 0;
                 border-top-color: $reviewing-color;
             }
             .panel-title {
                 color: $reviewing-color;
             }
         }
-        &.panel-close {
+        &.panel-closed {
             .panel-heading {
-                color: $close-color;
-                background: 0 0;
-                border-top-color: $close-color;
+                color: $closed-color;
+                border-top-color: $closed-color;
             }
             .panel-title {
-                color: $close-color;
+                color: $closed-color;
             }
         }
         .panel-body {

@@ -1,3 +1,14 @@
+$default-color: #37474f;
+$todo-color: #ffc107;
+$doing-color: #28a745;
+$reviewing-color: #8d47ab;
+$closed-color: #17a2b8;
+$bug-color: #dc3545;
+$feature-color: #6cce27;
+$production-color: #007bff;
+$netsuite-color: #093ac8;
+$on-hold-color: #d0cf2d;
+
 .issue {
   margin-bottom: 5px;
   .card {
@@ -22,6 +33,38 @@
         margin-right: 8px;
         font-size: 12px;
         font-weight: 500;
+        color: #fff;
+        background-color: gray;
+        &-todo {
+          background-color: $todo-color;
+        }
+        &-doing {
+          background-color: $doing-color;
+        }
+        &-reviewing {
+          background-color: $reviewing-color;
+        }
+        &-closed {
+          background-color: $closed-color;
+        }
+        &-testing {
+          background-color: $closed-color;
+        }
+        &-bug {
+          background-color: $bug-color;
+        }
+        &-feature {
+          background-color: $feature-color;
+        }
+        &-production {
+          background-color: $production-color;
+        }
+        &-netsuite {
+          background-color: $netsuite-color;
+        }
+        &-on-hold {
+          background-color: $on-hold-color;
+        }
       }
     }
   }

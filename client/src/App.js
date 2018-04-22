@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 
 import configureStore from './state';
-import { getIssues } from './state/ducks/issues';
+// import { getIssues } from './state/ducks/issues';
 
 import Header from './components/Common/Header';
 import Content from './components/Common/Content';

@@ -1,18 +1,16 @@
 import API_URL from './config';
 
 const request = async (uri, method, body) => {
-  const headers = new Headers();
-
-  headers.append('Accept', 'application/json'); // This one is enough for GET requests
-  headers.append('Content-type', 'application/json'); // This one sends body
-
   const res = await fetch(`${API_URL}/${uri}`, {
     method,
-    body: JSON.stringify(body),
-    headers
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body,
   });
   const json = await res.json();
-
+  
   if (!res.ok) {
     throw json;
   }

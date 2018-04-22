@@ -1,15 +1,15 @@
-const getIssues = state => state.issues;
-const getIssuesByBackLog = state => state.issues.filter((issue) => issue.state === 'hold-on');
-const getIssuesByTodo = state => state.issues.filter((issue) => issue.state === 'todo');
-const getIssuesByDoing = state => state.issues.filter((issue) => issue.state === 'doing');
-const getIssuesByReview = state => state.issues.filter((issue) => issue.state === 'review');
-const getIssuesByClose = state => state.issues.filter((issue) => issue.state === 'close');
+const getIssuesOpened = state => state.issues.filter(issue => issue.state === 'opened');
+const getIssuesBacklog = state => getIssuesOpened(state).filter(issue => !issue.labels.includes('todo', 'doing', 'reviewing'));
+const getIssuesTodo = state => getIssuesOpened(state).filter(issue => issue.labels.includes('todo'));
+const getIssuesDoing = state => getIssuesOpened(state).filter(issue => issue.labels.includes('doing'));
+const getIssuesReviewing = state => getIssuesOpened(state).filter(issue => issue.labels.includes('reviewing'));
+const getIssuesClosed = state => state.issues.filter((issue) =>  issue.state === 'closed');
+
 
 export {
-  getIssues,
-  getIssuesByBackLog,
-  getIssuesByTodo,
-  getIssuesByDoing,
-  getIssuesByReview,
-  getIssuesByClose
+  getIssuesBacklog,
+  getIssuesTodo,
+  getIssuesDoing,
+  getIssuesReviewing,
+  getIssuesClosed,
 };
