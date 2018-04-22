@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
   Col,
-  Card,
   CardText,
   CardBody,
   Badge
@@ -17,7 +16,7 @@ const Issue = ({issue}) => {
   const repoName = /^(http[s]?:\/\/[a-zA-Z0-9.\-_]+\/(.*))\/issues/.exec(issue.web_url)[2];
   const avatarUrl = issue.assignee && issue.assignee.avatar_url;
   return(
-    <div className="issue"> 
+    <div className="issue">
       <a target="_blank" href={webUrl} className="card">
         <CardBody>
           <div className="card-wrapper">
@@ -34,7 +33,7 @@ const Issue = ({issue}) => {
             </Col>
           </div>
           { issue.labels.length > 0 &&
-            issue.labels.map(label => 
+            issue.labels.map(label =>
               <Badge
                 key={label}
                 color='default'>
