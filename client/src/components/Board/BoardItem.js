@@ -14,11 +14,9 @@ const BoardItem = ({title, issues}) => (
           <span className="panel-count">{issues.length || 0}</span>
         </div>
         <div className="panel-body">
-        { issues.length > 0 &&
-            issues.map((issue, index) => 
-              <Issue key={index} issue={issue}/>
-            )
-        }
+        { issues.length > 0 && issues.map((issue, index) =>
+          <Issue key={index} issue={issue}/>
+        )}
         </div>
     </div>
   </Col>

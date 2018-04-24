@@ -24,7 +24,7 @@ class Board extends Component {
   }
 
   async componentDidMount() {
-    await this.props.getIssues();    
+    await this.props.getIssues();
     this.setState({
       backlog: this.props.issuesBacklog,
       todo: this.props.issuesTodo,
@@ -35,7 +35,6 @@ class Board extends Component {
   }
 
   renderBoards(boards) {
-    // if(!boards.length) return;
     return Object.keys(boards).map((key, index) =>
       <BoardItem
         key={index}
@@ -47,11 +46,9 @@ class Board extends Component {
 
   render() {
     return(
-      <Container fluid className="board mt-5 mb-2">
+      <Container fluid className="board">
         <Row>
-          {
-            this.renderBoards(this.state)
-          }
+          {this.renderBoards(this.state)}
         </Row>
       </Container>
     );

@@ -10,7 +10,10 @@ $netsuite-color: #093ac8;
 $on-hold-color: #d0cf2d;
 
 .issue {
-  margin-bottom: 5px;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
   .card {
     background: #fff;
     border-color: #00000014;
@@ -23,6 +26,7 @@ $on-hold-color: #d0cf2d;
       .card-wrapper {
         display: flex;
         margin-bottom: 5px;
+        line-height: 1.5;
         .card-text {
           font-size: 15px;
           .repo-name {
@@ -30,7 +34,7 @@ $on-hold-color: #d0cf2d;
             color: gray;
           }
         }
-      }  
+      }
       .badge {
         margin-right: 8px;
         font-size: 12px;
