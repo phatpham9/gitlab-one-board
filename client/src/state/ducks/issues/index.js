@@ -1,6 +1,4 @@
-import {
-  getIssues,
-} from './actions';
+import { getIssues } from './actions';
 import * as issuesSelectors from './selectors';
 import issuesReducers from './reducers';
 

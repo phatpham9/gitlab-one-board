@@ -1,11 +1,9 @@
-import {
-    GET_ISSUES
-} from './types';
+import { GET_ISSUES } from './types';
 
-import { IssueAPI } from '../../../services/api'
+import { Issues as IssuesAPI } from '../../../services/api'
 
 const getIssues = () => async (dispatch) => {
-    const issues = await IssueAPI.getIssues();
+    const issues = await IssuesAPI.getIssues();
     try {
         dispatch({
             type: GET_ISSUES,

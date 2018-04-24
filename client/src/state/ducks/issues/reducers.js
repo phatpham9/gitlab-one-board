@@ -1,6 +1,4 @@
-import {
-  GET_ISSUES,
-} from './types';
+import { GET_ISSUES } from './types';
 
 const initialState = [];
 
@@ -15,5 +13,5 @@ const issuesReducer = (state = initialState, action) => {
       return state;
   }
 };
-  
+
 export default issuesReducer;

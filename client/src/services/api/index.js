@@ -1,5 +1,5 @@
-import * as IssueAPI from './issues';
+import * as Issues from './issues';
 
 export{
-  IssueAPI,
+  Issues,
 };

@@ -4,26 +4,31 @@ import {
   Col,
   CardText,
   CardBody,
-  Badge
+  Badge,
 } from 'reactstrap';
 
-import './Issue.scss';
+import './Card.scss';
 
-const Issue = ({issue}) => {
-  const idIssue = issue.iid;
-  const webUrl = issue.web_url;
-  const title = issue.title || 'N/A';
-  const repoName = /^(http[s]?:\/\/[a-zA-Z0-9.\-_]+\/(.*))\/issues/.exec(issue.web_url)[2];
-  const avatarUrl = issue.assignee && issue.assignee.avatar_url;
+const propTypes = {
+  card: PropTypes.object.isRequired,
+};
+
+const Card = ({ card }) => {
+  const idCard = card.iid;
+  const webUrl = card.web_url;
+  const title = card.title || 'N/A';
+  const repoName = /^(http[s]?:\/\/[a-zA-Z0-9.\-_]+\/(.*))\/issues/.exec(card.web_url)[2];
+  const avatarUrl = card.assignee && card.assignee.avatar_url;
+
   return(
-    <div className="issue">
-      <a target="_blank" href={webUrl} className="card">
+    <div className="card">
+      <a target="_blank" href={webUrl}>
         <CardBody>
           <div className="card-wrapper">
             <Col className="p-0 pr-2" md="10">
               <CardText className="mb-0">
                 {title}
-                <span className="repo-name"> {`${repoName}#${idIssue}`}</span>
+                <span className="repo-name"> {`${repoName}#${idCard}`}</span>
               </CardText>
             </Col>
             <Col className="p-0 text-right" md="2">
@@ -32,8 +37,8 @@ const Issue = ({issue}) => {
             }
             </Col>
           </div>
-          { issue.labels.length > 0 &&
-            issue.labels.map(label =>
+          { card.labels.length > 0 &&
+            card.labels.map(label =>
               <Badge
                 key={label}
                 color='default'>
@@ -47,10 +52,6 @@ const Issue = ({issue}) => {
   );
 };
 
-const propTypes = {
-  issue: PropTypes.object.isRequired,
-};
+Card.propTypes = propTypes;
 
-Issue.propTypes = propTypes;
-
-export default Issue;
+export default Card;
