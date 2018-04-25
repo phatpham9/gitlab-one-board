@@ -6,7 +6,6 @@ import configureStore from './state';
 import Header from './components/Common/Header';
 import Content from './components/Common/Content';
 import Footer from './components/Common/Footer';
-import Board from './components/Board';
 
 import './App.scss';
 
@@ -16,9 +15,9 @@ const App = props => (
   <ReduxProvider store={store}>
     <div className="app">
       <Header />
-      <Content>
-        <Board />
-      </Content>
+
+      <Content />
+
       <Footer />
     </div>
   </ReduxProvider>

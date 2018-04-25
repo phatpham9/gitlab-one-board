@@ -5,10 +5,7 @@ const initialState = [];
 const issuesReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ISSUES:
-      return [
-        ...state,
-        ...action.issues
-      ];
+      return action.issues;
     default:
       return state;
   }

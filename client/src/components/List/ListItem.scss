@@ -1,16 +1,11 @@
 $default-color: #37474f;
 
-.card {
-  &:not(:last-child) {
-    margin-bottom: 5px;
-  }
+.list-item {
+  border-top: solid #f1f4f5 1px;
 
   a {
+    display: block;
     background: #fff;
-    border-color: #00000014;
-    border-radius: 3px;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    text-decoration: none;
     color: #212529;
 
     &:hover {
@@ -22,7 +17,7 @@ $default-color: #37474f;
     .card-body {
       padding: 10px;
 
-      .card-wrapper {
+      .list-item-wrapper {
         display: flex;
         margin-bottom: 5px;
         line-height: 1.5;

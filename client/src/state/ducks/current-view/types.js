@@ -1,0 +1,5 @@
+const SET_CURRENT_VIEW = 'ISSUES/SET_CURRENT_VIEW';
+
+export {
+  SET_CURRENT_VIEW,
+};

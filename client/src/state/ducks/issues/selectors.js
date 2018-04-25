@@ -1,3 +1,4 @@
+const getIssues = state => state.issues || [];
 const getIssuesOpened = state => state.issues.filter(issue => issue.state === 'opened');
 const getIssuesBacklog = state => getIssuesOpened(state).filter(issue => !issue.labels.includes('todo', 'doing', 'reviewing'));
 const getIssuesTodo = state => getIssuesOpened(state).filter(issue => issue.labels.includes('todo'));
@@ -7,6 +8,7 @@ const getIssuesClosed = state => state.issues.filter((issue) =>  issue.state ===
 
 
 export {
+  getIssues,
   getIssuesBacklog,
   getIssuesTodo,
   getIssuesDoing,
