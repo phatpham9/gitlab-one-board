@@ -44,3 +44,5 @@ app.listen(PORT, HOST, async () => {
 });
 
 console.log(`Running on http://${HOST}:${PORT}`); // eslint-disable-line no-console
+
+module.exports = app; // for testing
