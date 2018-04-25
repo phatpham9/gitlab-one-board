@@ -6,6 +6,10 @@ One board for all GitLab's issues
 [![Travis](https://img.shields.io/travis/phatpham9/gitlab-one-board.svg)](https://travis-ci.org/phatpham9/gitlab-one-board)
 [![David](https://img.shields.io/david/phatpham9/gitlab-one-board.svg)](https://github.com/phatpham9/gitlab-one-board)
 
+<div style="text-align: center">
+  <img src="./images/demo.png">
+</div>
+
 ## Usage
 
 ### Running on local
