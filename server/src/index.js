@@ -7,8 +7,11 @@ const path = require('path');
 const { NOT_FOUND } = require('http-status-codes');
 
 const issuesRoute = require('./issues');
+const usersRoute = require('./users');
+const projectsRoute = require('./projects');
+const labelsRoute = require('./labels');
 const { sendNotFound } = require('./utils/http-error');
-const { fetchIssues } = require('./utils/gitlab-api');
+const { fetchIssues, fetchUsers, fetchProjects } = require('./utils/gitlab-api');
 
 // Constants
 const PORT = process.env.PORT || 9000;
@@ -26,6 +29,9 @@ app.use(bodyParser.json());
 
 app.use('/api', [
   issuesRoute,
+  usersRoute,
+  projectsRoute,
+  labelsRoute,
 ]);
 
 const notFoundError = (req, res) => res.status(NOT_FOUND).json(sendNotFound());
@@ -37,10 +43,9 @@ app.get('/', (request, response) => {
 
 app.all('*', notFoundError);
 
-
 app.listen(PORT, HOST, async () => {
-  // fetch issues for the first time
-  await fetchIssues();
+  // fetch issues, users, projects for the first time
+  await Promise.all(fetchIssues(), fetchUsers(), fetchProjects());
 });
 
 console.log(`Running on http://${HOST}:${PORT}`); // eslint-disable-line no-console

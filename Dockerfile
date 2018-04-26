@@ -7,6 +7,13 @@ ADD package.json /app/package.json
 WORKDIR /app
 
 RUN ["yarn", "install"]
+
+WORKDIR /app/client
+
+RUN ["npm", "rebuild", "node-sass"]
+
+WORKDIR /app
+
 RUN ["yarn", "build"]
 
 ENV HOST 0.0.0.0
