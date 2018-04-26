@@ -4,13 +4,21 @@ const SCOPE = 'all';
 const PER_PAGE = 100;
 
 const issues = [];
-let lastFetch;
+const users = [];
+const projects = [];
+const labels = new Set();
+
+const lastFetch = {};
 
 const fetchAsync = async (page) => {
   const response = await doFetch(`issues?scope=${SCOPE}&per_page=${PER_PAGE}&page=${page}`);
   const list = await response.json();
 
   return list;
+};
+
+const fetchLabels = () => {
+  issues.forEach(issue => issue.labels.forEach(label => labels.add(label)));
 };
 
 const fetchIssues = async () => {
@@ -31,12 +39,36 @@ const fetchIssues = async () => {
   const remainIssues = await Promise.all(promises);
   remainIssues.forEach(item => item.forEach(issue => issues.push(issue)));
 
-  lastFetch = new Date();
+  lastFetch.issues = new Date();
+  fetchLabels();
 };
 
+const fetchUsers = async () => {
+  const response = await doFetch('users?active=true');
+  const list = await response.json();
+
+  list.forEach(user => users.push(user));
+
+  lastFetch.users = new Date();
+};
+
+const fetchProjects = async () => {
+  const response = await doFetch('projects');
+  const list = await response.json();
+
+  list.forEach(project => projects.push(project));
+
+  lastFetch.projects = new Date();
+};
 
 module.exports = {
-  issues,
   lastFetch,
+  issues,
+  users,
+  projects,
+  labels,
   fetchIssues,
+  fetchUsers,
+  fetchProjects,
+  fetchLabels,
 };
