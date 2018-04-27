@@ -18,6 +18,7 @@ const fetchAsync = async (page) => {
 };
 
 const fetchLabels = () => {
+  labels.clear();
   issues.forEach(issue => issue.labels.forEach(label => labels.add(label)));
 };
 
@@ -46,7 +47,7 @@ const fetchIssues = async () => {
 const fetchUsers = async () => {
   const response = await doFetch('users?active=true');
   const list = await response.json();
-
+  users.length = 0;
   list.forEach(user => users.push(user));
 
   lastFetch.users = new Date();
@@ -55,7 +56,7 @@ const fetchUsers = async () => {
 const fetchProjects = async () => {
   const response = await doFetch('projects');
   const list = await response.json();
-
+  projects.length = 0;
   list.forEach(project => projects.push(project));
 
   lastFetch.projects = new Date();
