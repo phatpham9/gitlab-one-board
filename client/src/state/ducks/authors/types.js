@@ -1,0 +1,5 @@
+const GET_AUTHORS = 'AUTHORS/GET_AUTHORS';
+
+export {
+  GET_AUTHORS,
+};

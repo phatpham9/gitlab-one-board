@@ -5,6 +5,8 @@ import { setCurrentView, currentViewSelectors } from '../../../state/ducks/curre
 
 import { APP } from "../../../config";
 
+import Filter from '../Filter';
+
 import './Header.scss';
 
 const views = [{
@@ -21,7 +23,8 @@ const Header = props => (
       <img className="logo" src="./logo.png" alt="" />
       <span className="brand-name">{APP.name}</span>
     </div>
-    <div className="float-right controls">
+    <div className="float-right controls d-inline">
+      <Filter />
       {views.map(({ value, title }, index) => (
         <a key={index} className={`view ${props.currentView === value ? 'active' : ''}`} onClick={() => props.setCurrentView(value)}>{title}</a>
       ))}

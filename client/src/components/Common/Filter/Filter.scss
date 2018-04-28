@@ -1,0 +1,27 @@
+.select-filter {
+  display: inline-block;
+  margin-top: -4px;
+  vertical-align: top;
+  .clear-all {
+    margin-right: 10px;
+    color: #007bff !important;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    &:hover {
+      color: #228dff !important;
+    }
+  }
+  select {
+    width: 132px;
+    border-radius: 0;
+    margin-right: 10px;
+    display: inline-block;
+    height: 28px !important;
+    &:focus {
+      box-shadow: none;
+      outline: none;
+      border-color: #ced4da;
+    }
+  }
+}

@@ -1,17 +1,40 @@
-const getIssues = state => state.issues || [];
-const getIssuesOpened = state => state.issues.filter(issue => issue.state === 'opened');
-const getIssuesBacklog = state => getIssuesOpened(state).filter(issue => !issue.labels.includes('todo', 'doing', 'reviewing'));
-const getIssuesTodo = state => getIssuesOpened(state).filter(issue => issue.labels.includes('todo'));
-const getIssuesDoing = state => getIssuesOpened(state).filter(issue => issue.labels.includes('doing'));
-const getIssuesReviewing = state => getIssuesOpened(state).filter(issue => issue.labels.includes('reviewing'));
-const getIssuesClosed = state => state.issues.filter((issue) =>  issue.state === 'closed');
+const filterIssues = (issues, filters) => {
+  let filteredIssues = [ ...issues ];
 
+  for (let k in filters) {
+    if(filters[k]){
+      switch(k) {
+        case 'project':
+          filteredIssues = filteredIssues.filter(issue => issue.project_id === +filters[k])
+          break;
+        case 'author':
+          filteredIssues = filteredIssues.filter(issue => issue.author && issue.author.id === +filters[k])
+          break;
+        case 'assignee':
+          filteredIssues = filteredIssues.filter(issue => issue.assignee && (issue.assignee.id === +filters[k]))
+          break;
+        default: 
+          filteredIssues = filteredIssues.filter(issue => issue.labels.includes(filters[k]))
+      }
+    }
+  }
+  
+  return filteredIssues;
+};
+
+const getIssues = state => filterIssues(state.issues, state.filters);
+const getIssuesOpened = state => filterIssues(state.issues.filter(issue => issue.state === 'opened'), state.filters);
+const getIssuesBacklog = state => filterIssues(getIssuesOpened(state).filter(issue => !issue.labels.includes('todo', 'doing', 'reviewing')), state.filters);
+const getIssuesTodo = state => filterIssues(getIssuesOpened(state).filter(issue => issue.labels.includes('todo')), state.filters);
+const getIssuesDoing = state => filterIssues(getIssuesOpened(state).filter(issue => issue.labels.includes('doing')), state.filters);
+const getIssuesReviewing = state => filterIssues(getIssuesOpened(state).filter(issue => issue.labels.includes('reviewing')), state.filters);
+const getIssuesClosed = state => filterIssues(state.issues.filter((issue) =>  issue.state === 'closed'), state.filters);
 
 export {
-  getIssues,
   getIssuesBacklog,
   getIssuesTodo,
   getIssuesDoing,
   getIssuesReviewing,
   getIssuesClosed,
+  getIssues
 };
