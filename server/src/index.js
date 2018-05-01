@@ -11,6 +11,7 @@ const ConnectMongo = require('connect-mongo');
 const ExpressSession = require('express-session');
 const { NOT_FOUND } = require('http-status-codes');
 
+const authRoute = require('./auth');
 const issuesRoute = require('./issues');
 const usersRoute = require('./users');
 const projectsRoute = require('./projects');
@@ -65,10 +66,10 @@ Mongoose.connection.on('open', () => {
   app.use(Passport.session());
 
   // for authentication
-  app.use(require('./auth'));
+  // app.use(require('./auth'));
 
   app.use('/api', [
-    // authRoute,
+    authRoute,
     issuesRoute,
     usersRoute,
     projectsRoute,

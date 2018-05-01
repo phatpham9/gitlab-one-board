@@ -9,15 +9,17 @@ const { GITLAB_BASE_URL, GITLAB_CLIENT_ID, GITLAB_SECRET,
 
 const gitlabAuth = Router();
 
-Passport.use(new GitlabStrategy({
-  baseURL: GITLAB_BASE_URL,
-  clientID: GITLAB_CLIENT_ID,
-  clientSecret: GITLAB_SECRET,
-  scope: [GITLAB_SCOPE],
-  callbackURL: GITLAB_CALLBACK_URL,
-}, passportGeneralCallback));
+gitlabAuth.get('/auth/gitlab', (req, res, next) => {
+  Passport.use(new GitlabStrategy({
+    baseURL: GITLAB_BASE_URL,
+    clientID: GITLAB_CLIENT_ID,
+    clientSecret: GITLAB_SECRET,
+    scope: [GITLAB_SCOPE],
+    callbackURL: GITLAB_CALLBACK_URL,
+  }, passportGeneralCallback));
 
-gitlabAuth.get('/auth/gitlab', Passport.authenticate('gitlab'));
+  Passport.authenticate('gitlab')(req, res, next);
+});
 
 // gitlab auth callback
 gitlabAuth.get('/auth/gitlab/callback',
