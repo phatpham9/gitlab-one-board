@@ -65,9 +65,6 @@ Mongoose.connection.on('open', () => {
   app.use(Passport.initialize());
   app.use(Passport.session());
 
-  // for authentication
-  // app.use(require('./auth'));
-
   app.use('/api', [
     authRoute,
     issuesRoute,

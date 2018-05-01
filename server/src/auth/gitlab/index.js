@@ -22,10 +22,10 @@ gitlabAuth.get('/auth/gitlab', Passport.authenticate('gitlab'));
 // gitlab auth callback
 gitlabAuth.get('/auth/gitlab/callback',
 Passport.authenticate('gitlab', {
-  failureRedirect: '/',
+  failureRedirect: process.env.REDIRECT_URL,
 }), (req, res) => {
   // Successful authentication, redirect home.
-  res.redirect('/');
+  res.redirect(process.env.REDIRECT_URL);
 });
 
 module.exports = gitlabAuth;
